@@ -3,8 +3,8 @@ import subprocess
 
 #以下为官方运行参数
 start_consumer = "java -jar \
-                       -Xms2G \
-                       -Xmx2G \
+                       -Xms1G \
+                       -Xmx1G \
                        -Dlogs.dir=./consumer_logs \
                        mesh-consumer.jar"
 					   
@@ -31,6 +31,9 @@ start_large_provider = "java -jar \
                              -Ddubbo.application.qos.enable=false \
                              -Dlogs.dir=./large_logs \
                              mesh-provider.jar "
+							 
+def async_run(cmd, filename):
+    subprocess.Popen(cmd, stdout=open(filename + '.out', 'w'), stderr=open(filename + '.err', 'w'))
 
 
 async_run(start_consumer, "consumer")
