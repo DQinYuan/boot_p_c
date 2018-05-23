@@ -33,7 +33,7 @@ start_large_provider = "java -jar \
                              mesh-provider.jar "
 							 
 def async_run(cmd, filename):
-    subprocess.Popen(cmd, stdout=open(filename + '.out', 'w'), stderr=open(filename + '.err', 'w'))
+    subprocess.Popen(cmd, stdout=open(filename + '.out', 'w'), stderr=open(filename + '.err', 'w'), shell=True)
 
 
 async_run(start_consumer, "consumer")
